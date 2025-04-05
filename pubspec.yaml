@@ -60,6 +60,21 @@ flutter:
     - assets/icons/avatar.svg
     - assets/icons/history.svg
     - assets/icons/rectangle-15.png
+    - assets/icons/mad.png
+    - assets/icons/ara.png
+    - assets/icons/Edit.svg
+    - assets/icons/profile.svg
+    - assets/icons/settings.svg
+    - assets/icons/bookmark.svg
+    - assets/icons/version.svg
+    - assets/icons/Home.svg
+    - assets/icons/purpose.svg
+    - assets/icons/isk.png
+    - assets/icons/jap.png
+    - assets/icons/kap.png
+    - assets/icons/tal.png
+    - assets/icons/sri.png
+    - assets/icons/check.svg
 
   fonts:
     - family: Poppins

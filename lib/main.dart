@@ -5,6 +5,10 @@ import 'screens/intro-1.dart';
 import 'verification.dart';
 import 'home.dart';
 import 'sign_in.dart';
+import 'detail.dart'; // Add import for DetailsPage
+import 'search.dart'; // Add import for SearchScreen
+import 'edit.dart';
+import 'profile.dart'; // Add import for profile
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +29,11 @@ class MyApp extends StatelessWidget {
         '/verification': (context) => const VerificationScreen(),
         '/home': (context) => const HomeScreen(),
         '/signin': (context) => const SignInScreen(),
+        '/search': (context) => const SearchScreen(),
+        '/details': (context) => DetailsPage(
+          destination: ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>,
+        ),
+        '/edit': (context) => const EditProfileScreen(),
       },
     );
   }

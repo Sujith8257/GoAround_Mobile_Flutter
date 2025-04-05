@@ -305,8 +305,12 @@ class _VerificationScreenState extends State<VerificationScreen> {
                           borderRadius: BorderRadius.circular(22),
                         ),
                         child: IconButton(
-                          icon: const Icon(Icons.arrow_back,
-                              color: Color(0xFF7C7C7C)),
+                          icon: SvgPicture.asset(
+                            'assets/icons/back.svg',
+                            width: 30,
+                            height: 30,
+                            color: const Color(0xFF7C7C7C),
+                          ),
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -411,7 +415,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                             );
                           },
                         );
-                        
+
                         // Navigate after a delay to allow popup to be seen
                         Future.delayed(const Duration(seconds: 3), () {
                           Navigator.of(context).pushReplacementNamed('/signin');
