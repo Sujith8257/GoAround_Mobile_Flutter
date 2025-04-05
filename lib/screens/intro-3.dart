@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'intro-3.dart';
+import '../sign_in.dart';  // Add this import
 
-class OnboardScreen2 extends StatelessWidget {
-  const OnboardScreen2({super.key});
+class OnboardScreen3 extends StatelessWidget {
+  const OnboardScreen3({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class OnboardScreen2 extends StatelessWidget {
             right: 0,
             height: 444,
             child: Image.asset(
-              'assets/icons/intro-2.png',
+              'assets/icons/intro-3.png',
               fit: BoxFit.cover,
             ),
           ),
@@ -45,27 +45,22 @@ class OnboardScreen2 extends StatelessWidget {
             right: 22,
             child: Column(
               children: [
-                const Text.rich(
-                  TextSpan(
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: const TextSpan(
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF1B1E28),
+                    ),
                     children: [
+                      TextSpan(text: 'People don\'t take trips, trips take '),
                       TextSpan(
-                        text: 'It\'s a big world out there go ',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'explore',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.orange,
-                        ),
+                        text: 'people',
+                        style: TextStyle(color: Color(0xFFFF7029)),
                       ),
                     ],
                   ),
-                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),
                 SvgPicture.asset(
@@ -75,30 +70,25 @@ class OnboardScreen2 extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'To get the best of your adventure you just need to leave and go where you like. We are waiting for you.',
+                  'To get the best of your adventure you just need to leave and go where you like. we are waiting for you',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.grey,
                   ),
                 ),
-              ],
-            ),
-          ),
-
-          // Pagination Dots
-          Positioned(
-            bottom: 105,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildDot(false, 13),
-                const SizedBox(width: 5),
-                _buildDot(true, 35),
-                const SizedBox(width: 5),
-                _buildDot(false, 13),
+                const SizedBox(height: 48),
+                // Pagination Dots
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildDot(false, 13),
+                    const SizedBox(width: 5),
+                    _buildDot(false, 13),
+                    const SizedBox(width: 5),
+                    _buildDot(true, 35),
+                  ],
+                ),
               ],
             ),
           ),
@@ -118,10 +108,10 @@ class OnboardScreen2 extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const OnboardScreen3(),
+                    builder: (context) => const SignInScreen(),
                   ),
                 );
               },

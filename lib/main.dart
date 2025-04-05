@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'screens/intro-1.dart';
+// Add imports for all screens used in routes
+import 'verification.dart';
+import 'home.dart';
+import 'sign_in.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +20,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
       home: const SplashScreen(),
+      // Fixed routes section
+      routes: {
+        '/verification': (context) => const VerificationScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/signin': (context) => const SignInScreen(),
+      },
     );
   }
 }
@@ -111,8 +121,8 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final logoSize = screenSize.width * 0.22;
-    final fontSize = screenSize.width * 0.08;
+    final logoSize = screenSize.width * 0.18; // Reduced from 0.22
+    final fontSize = screenSize.width * 0.07; // Reduced from 0.08
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -120,49 +130,56 @@ class _SplashScreenState extends State<SplashScreen>
         child: AnimatedBuilder(
           animation: _controller,
           builder: (context, child) {
-            return Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Transform.translate(
-                  offset: Offset(_slideAnimation.value, 0),
-                  child: ScaleTransition(
-                    scale: _scaleAnimation,
-                    child: Image.asset(
-                      'assets/icons/logo-no-background-1.png',
-                      width: logoSize,
-                      height: logoSize * 0.9,
+            return FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Transform.translate(
+                    offset: Offset(_slideAnimation.value, 0),
+                    child: ScaleTransition(
+                      scale: _scaleAnimation,
+                      child: Image.asset(
+                        'assets/icons/logo-no-background-1.png',
+                        width: logoSize,
+                        height: logoSize * 0.9,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(width: screenSize.width * 0.02),
-                ClipRect(
-                  child: SizedBox(
-                    width: fontSize * 4.5 * _textWidthAnimation.value,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'GoAround',
-                          style: GoogleFonts.poppins(
-                            fontSize: fontSize,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                        if (_showCursor)
+                  SizedBox(
+                      width:
+                          screenSize.width * 0.005), // Further reduced spacing
+                  ClipRect(
+                    child: SizedBox(
+                      width: fontSize *
+                          4.2 *
+                          _textWidthAnimation.value, // Adjusted multiplier
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
                           Text(
-                            '|',
+                            'GoAround',
                             style: GoogleFonts.poppins(
-                              fontSize: fontSize * 0.9,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.black.withOpacity(0.6),
+                              fontSize: fontSize,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
                             ),
                           ),
-                      ],
+                          if (_showCursor)
+                            Text(
+                              '|',
+                              style: GoogleFonts.poppins(
+                                fontSize: fontSize * 0.9,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black.withOpacity(0.6),
+                              ),
+                            ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           },
         ),

@@ -51,6 +51,15 @@ flutter:
     - assets/icons/intro-1.png
     - assets/icons/vector-2524.svg
     - assets/icons/intro-2.png
+    - assets/icons/intro-3.png
+    - assets/icons/google.svg
+    - assets/icons/back.svg
+    - assets/icons/email.svg
+    - assets/icons/kan.jpg
+    - assets/icons/tri.jpg
+    - assets/icons/avatar.svg
+    - assets/icons/history.svg
+    - assets/icons/rectangle-15.png
 
   fonts:
     - family: Poppins
